@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import './estilo.css';
 
 export default function PaginaInicial() {
-  const [ numeroAleatorio, setNumeroAleatorio ] = useState(1);
+  const [ numeroAleatorio, setNumeroAleatorio ] = useState(
+    gerarNumero()
+  );
 
-  function gerarNumero() {
-    const novoNumero = Math.floor(Math.random() * (100-1) + 1);
-    setNumeroAleatorio(novoNumero);
+  function handleClick() {
+    setNumeroAleatorio(gerarNumero());
+  }
+
+  function gerarNumero(){
+    return Math.floor(Math.random() * (100-1) + 1);
   }
 
   return(
@@ -19,7 +24,7 @@ export default function PaginaInicial() {
           Click no botão abaixo para gerar um número aleatório:
         </label>
 
-        <button onClick={ gerarNumero }>
+        <button onClick={ handleClick }>
           Gerar número
         </button>
       </div>
